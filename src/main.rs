@@ -25,6 +25,7 @@ async fn main() -> OpenActionResult<()> {
 
 	tokio::spawn(async {
 		let mut mouse_battery = "N/A".to_string();
+		let mut current_state: u16 = 0;
 		loop {
 			if let Ok(entries) = std::fs::read_dir("/sys/class/power_supply") {
 				for entry in entries.flatten() {
@@ -32,14 +33,18 @@ async fn main() -> OpenActionResult<()> {
 					if name.contains("hidpp_battery") || name.contains("mouse") {
 						let cap_path = entry.path().join("capacity");
 						if let Ok(cap) = std::fs::read_to_string(cap_path) {
-							mouse_battery = format!("{}%", cap.trim());
+							let cap_str = cap.trim();
+							mouse_battery = format!("{}%", cap_str);
+							if let Ok(cap_num) = cap_str.parse::<u8>() {
+								current_state = if cap_num <= 20 { 1 } else { 0 };
+							}
 							break;
 						}
 					}
 				}
 			}
 			for instance in visible_instances(BatteryAction::UUID).await {
-				let _ = instance.set_title(Some(mouse_battery.clone()), Some(1)).await;
+				let _ = instance.set_title(Some(mouse_battery.clone()), Some(current_state)).await;
 			}
 		}
 	});
