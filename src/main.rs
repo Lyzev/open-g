@@ -39,7 +39,7 @@ async fn main() -> OpenActionResult<()> {
 				}
 			}
 			for instance in visible_instances(BatteryAction::UUID).await {
-				let _ = instance.set_title(Some(mouse_battery.clone()), None).await;
+				let _ = instance.set_title(Some(mouse_battery.clone()), Some(1)).await;
 			}
 		}
 	});
