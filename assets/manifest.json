@@ -17,7 +17,7 @@
 			"Icon": "icon",
 			"Tooltip": "Displays Logitech mouse battery life",
 			"Controllers": ["Keypad", "Encoder"],
-			"States": [{ "Title": "N/A", "FontSize": 16, "TitleColor": "#FFFFFF"}, { "Title": "N/A", "FontSize": 16, "TitleColor": "#FF0000"}]
+			"States": [{ "Title": "", "FontSize": 16}]
 		}
 	]
 }
