@@ -39,13 +39,9 @@ fn generate_battery_svg(percentage: Option<u8>) -> String {
 	let bar_width = (pct / 100.0) * 96.0;
 	let svg = format!(
 		"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 144 144\" width=\"144\" height=\"144\">\
-            <!-- Outer Battery Shell -->\
             <rect x=\"15\" y=\"45\" width=\"108\" height=\"54\" rx=\"8\" ry=\"8\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"6\"/>\
-            <!-- Battery Terminal (Right Side) -->\
             <path d=\"M 123 60 C 129 60 129 84 123 84\" fill=\"#FFFFFF\"/>\
-            <!-- Dynamic Inner Fill -->\
             <rect x=\"21\" y=\"51\" width=\"{}\" height=\"42\" rx=\"4\" ry=\"4\" fill=\"{}\"/>\
-            <!-- Percentage Text -->\
             <text x=\"69\" y=\"72\" font-family=\"sans-serif\" font-size=\"24\" font-weight=\"bold\" fill=\"#FFFFFF\" text-anchor=\"middle\" dominant-baseline=\"central\">{}</text>\
         </svg>",
 		bar_width, color, text
