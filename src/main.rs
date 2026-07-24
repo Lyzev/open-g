@@ -42,7 +42,7 @@ fn generate_battery_svg(percentage: Option<u8>) -> String {
             <rect x=\"15\" y=\"45\" width=\"108\" height=\"54\" rx=\"8\" ry=\"8\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"6\"/>\
             <path d=\"M 123 60 C 129 60 129 84 123 84\" fill=\"#FFFFFF\"/>\
             <rect x=\"21\" y=\"51\" width=\"{}\" height=\"42\" rx=\"4\" ry=\"4\" fill=\"{}\"/>\
-            <text x=\"69\" y=\"72\" font-family=\"sans-serif\" font-size=\"24\" font-weight=\"bold\" fill=\"#FFFFFF\" text-anchor=\"middle\" dominant-baseline=\"central\">{}</text>\
+            <text x=\"69\" y=\"72\" font-family=\"sans-serif\" font-size=\"24\" font-weight=\"bold\" fill=\"#FFFFFF\" stroke=\"#000000\" stroke-width=\"2\" stroke-linejoin=\"round\" text-anchor=\"middle\" dominant-baseline=\"central\">{}</text>\
         </svg>",
 		bar_width, color, text
 	);
